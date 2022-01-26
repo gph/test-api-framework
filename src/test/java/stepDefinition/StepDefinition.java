@@ -3,6 +3,7 @@ package stepDefinition;
 import static io.restassured.RestAssured.given;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 import org.junit.Assert;
@@ -22,13 +23,13 @@ public class StepDefinition extends Utils {
 	AddPlace place;
 	Response response;
 	
-	@Given("API Payload")
-	public void api_payload() {
-		place = data.addPlacePayload();
+	@Given("API Payload with {string} {string} {string}")
+	public void api_payload_with(String name, String address, String language) {
+		place = data.addPlacePayload(name, address, language);
 	}
 
 	@When("user calls {string} with post http request")
-	public void user_calls_with_post_http_request(String string) throws FileNotFoundException {
+	public void user_calls_with_post_http_request(String string) throws IOException {
 		response = 
 				given().spec(requestSpecification()).body(place)
 				.when().post("/maps/api/place/add/json")

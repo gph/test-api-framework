@@ -2,6 +2,7 @@ package stepDefinition;
 
 import static io.restassured.RestAssured.given;
 
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 
 import org.junit.Assert;
@@ -27,11 +28,11 @@ public class StepDefinition extends Utils {
 	}
 
 	@When("user calls {string} with post http request")
-	public void user_calls_with_post_http_request(String string) {
+	public void user_calls_with_post_http_request(String string) throws FileNotFoundException {
 		response = 
 				given().spec(requestSpecification()).body(place)
 				.when().post("/maps/api/place/add/json")
-				.then().log().all().spec(responseSpecification()).extract().response();
+				.then().spec(responseSpecification()).extract().response();
 	}
 
 	@Then("the API call is success with status code {int}")

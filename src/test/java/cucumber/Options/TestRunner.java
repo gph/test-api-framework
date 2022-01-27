@@ -10,7 +10,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions( 
 		features = "src/test/java/features",
         glue = "stepDefinition",
-		stepNotifications = true)
+		stepNotifications = true,
+		tags="not @AddPlace or @DeletePlace")
 public class TestRunner {
 	
 }

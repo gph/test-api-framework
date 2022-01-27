@@ -1,6 +1,6 @@
 Feature: API validation
 
-@AddPlace
+@addplace
 Scenario Outline: Verify if Place is being succesfully added using AddPlaceAPI
 Given API Payload with "<name>" "<address>" "<language>" 
 When user calls "AddPlaceAPI" with "POST" http request 
@@ -14,7 +14,7 @@ Examples: # Every row is a new dataset
 	|Old House 	| Japanese | 321, below, somewhere 1 	|
 	#|Airbnb		| Spanish  | 431213 eulaksjka			|
 	
-@DeletePlace
+@deleteplace
 Scenario: Verify if Delete Place functionality is working
 Given API Payload DeletePlace
 When user calls "DeletePlaceAPI" with "DELETE" http request

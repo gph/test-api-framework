@@ -10,8 +10,14 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions( 
 		features = "src/test/java/features",
         glue = "stepDefinition",
-		stepNotifications = true,
-		tags="not @AddPlace or @DeletePlace")
+        plugin = {
+        		"pretty",
+        		"json:target/jsonReports/cucumber-report.json",
+        		"html:target/cucumber-report/cucumber.html"
+		},
+		stepNotifications = true)
+		//tags="@addplace or @deleteplace")  
+		// phases Compile -> Test -> Verify
 public class TestRunner {
 	
 }
